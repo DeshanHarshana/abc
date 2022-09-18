@@ -1,0 +1,125 @@
+
+
+Cron gives the ability to run commands periodically on the system.
+ Cron jobs can be set up by the administrator or by users.
+ The Cron Table is stored in  /etc/crontab
+ Users can edit cron jobs with:  crontab –e
+ List with:
+ crontab –l
+
+CRON EXAMPLES...
+ 0 6 */2 * * mailq –v | mail –s “Stuck Mails ...” mailadmin
+ Uses mailq every two days to test whether there is any mail stuck in the mail queue and sends the mail to administrator
+(mailadminl@...)
+ 0 2 1 */2 * mt –f /dev/rft0 rewind; tar cf /dev/rft0 /etc
+ Runs at 2:00AM on the first day of the month in every other month to backup the /etc to the tape (make sure the tape is in the drive!!)
+ The same can be written as:
+ 0 2 1 jan,mar,may,jul,sep,nov * mt –f /dev/rft0 rewind; tar cf /dev/rft0 /etc
+ 0 0 * * * cmd
+ 5 4 * * 6 cmd
+ 0 1 */5 * * cmd
+ 0 1 1-15 * * cmd
+ * * * 12 4,5 cmd
+- Every night at 00:00 hours
+- 4:05am on Saturdays
+- At 1:00am on every 5th day – 1st, 6th, 11th, so on - At 1:00am on every day from 1st to 15th, inclusive - Every December Thu & Fri
+
+deshan@deshan-hpnotebook:~/Desktop$ xterm &
+[1] 13056
+deshan@deshan-hpnotebook:~/Desktop$ ps
+    PID TTY          TIME CMD
+  10128 pts/0    00:00:00 bash
+  13208 pts/0    00:00:00 ps
+[1]+  Done                    xterm
+deshan@deshan-hpnotebook:~/Desktop$ ps -af
+UID          PID    PPID  C STIME TTY          TIME CMD
+root       11461   11225  0 14:14 pts/1    00:00:00 sudo -u guest -s
+guest      11463   11462  0 14:14 pts/2    00:00:00 /bin/bash
+root       11542   11463  0 14:25 pts/2    00:00:00 su deshan
+deshan     11543   11542  0 14:25 pts/2    00:00:00 bash
+root       11796   11543  0 14:32 pts/2    00:00:00 sudo -u guest -s
+guest      11798   11797  0 14:32 pts/3    00:00:00 /bin/bash
+root       11833   11798  0 14:37 pts/3    00:00:00 su deshan
+deshan     11834   11833  0 14:37 pts/3    00:00:00 bash
+root       12096   11834  0 14:40 pts/3    00:00:00 sudo -u deshan -s
+deshan     12098   12097  0 14:40 pts/4    00:00:00 /bin/bash
+root       12306   12098  0 14:40 pts/4    00:00:00 sudo -u guest -s
+guest      12308   12307  0 14:40 pts/5    00:00:00 /bin/bash
+root       12319   12308  0 14:41 pts/5    00:00:00 su deshan
+deshan     12320   12319  0 14:41 pts/5    00:00:00 bash
+root       12531   12320  0 14:41 pts/5    00:00:00 sudo -u guest1 -s
+guest1     12533   12532  0 14:41 pts/6    00:00:00 /bin/bash
+guest1     12832   12533  0 14:56 pts/6    00:00:00 vi file
+deshan     13209   10128  0 15:05 pts/0    00:00:00 ps -af
+deshan@deshan-hpnotebook:~/Desktop$ top
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+top - 15:05:41 up  9:36,  6 users,  load average: 0.07, 0.03, 0.00
+Tasks: 250 total,   1 running, 249 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  4.3 sy,  0.0 ni, 95.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :  11885.8 total,   7775.4 free,   1864.0 used,   2246.4 buff/cache
+MiB Swap:    512.0 total,    512.0 free,      0.0 used.   9471.3 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                                                                 
+  13210 deshan    20   0   15748   4040   3180 R  12.5   0.0   0:00.02 top                                                                                                                     
+  11016 root      20   0       0      0      0 I   6.2   0.0   0:01.14 kworker/0:0-events                                                                                                      
+      1 root      20   0  166420  11844   8292 S   0.0   0.1   0:02.15 systemd                                                                                                                 
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.01 kthreadd                                                                                                                
+      3 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_gp                                                                                                                  
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_par_gp                                                                                                              
+      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 netns                                                                                                                   
+      7 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri                                                                                             
+      9 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 mm_percpu_wq                                                                                                            
+     10 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_tasks_rude_                                                                                                         
+     11 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_tasks_trace                                                                                                         
+     12 root      20   0       0      0      0 S   0.0   0.0   0:07.28 ksoftirqd/0                                                                                                             
+     13 root      20   0       0      0      0 I   0.0   0.0   0:15.91 rcu_sched                                                                                                               
+     14 root      rt   0       0      0      0 S   0.0   0.0   0:00.10 migration/0                                                                                                             
+     15 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/0                                                                                                           
+     17 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0                                                                                                                 
+     18 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/1                                                                                                                 
+     19 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/1                                                                                                           
+     20 root      rt   0       0      0      0 S   0.0   0.0   0:00.21 migration/1                                                                                                             
+     21 root      20   0       0      0      0 S   0.0   0.0   0:12.06 ksoftirqd/1                                                                                                             
+     23 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/1:0H-events_highpri                                                                                             
+     24 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/2                                                                                                                 
+     25 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/2                                                                                                           
+     26 root      rt   0       0      0      0 S   0.0   0.0   0:00.22 migration/2                                                                                                             
+     27 root      20   0       0      0      0 S   0.0   0.0   0:00.11 ksoftirqd/2                                                                                                             
+     29 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/2:0H-events_highpri                                                                                             
+     30 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/3                                                                                                                 
+     31 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/3                                                                                                           
+     32 root      rt   0       0      0      0 S   0.0   0.0   0:00.22 migration/3                                                                                                             
+     33 root      20   0       0      0      0 S   0.0   0.0   0:00.12 ksoftirqd/3                                                                                                             
+     35 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/3:0H-events_highpri                                                                                             
+     36 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kdevtmpfs                                                                                                               
+     37 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 inet_frag_wq                                                                                                            
+     38 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kauditd                                                                                                                 
+     39 root      20   0       0      0      0 S   0.0   0.0   0:00.02 khungtaskd                                                                                                              
+     40 root      20   0       0      0      0 S   0.0   0.0   0:00.00 oom_reaper                                                                                                              
+     41 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 writeback                                                                                                               
+     42 root      20   0       0      0      0 S   0.0   0.0   0:00.99 kcompactd0                                                                                                              
+     43 root      25   5       0      0      0 S   0.0   0.0   0:00.00 ksmd                                                                                                                    
+deshan@deshan-hpnotebook:~/Desktop$ who
+deshan   tty1         2022-09-18 05:29 (:0)
+deshan   pts/2        2022-09-18 14:14
+deshan   pts/3        2022-09-18 14:32
+deshan   pts/4        2022-09-18 14:40
+deshan   pts/5        2022-09-18 14:40
+deshan   pts/6        2022-09-18 14:41
+deshan@deshan-hpnotebook:~/Desktop$ 
