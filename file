@@ -1,1 +1,217 @@
-bash
+deshan@deshan-hpnotebook:~$ su guest
+Password: 
+$                                                                                                                                                                                              
+$ ^C                                                                                                                                                                                           
+$                                                                                                                                                                                              
+$                                                                                                                                                                                              
+$ exit                                                                                                                                                                                         
+deshan@deshan-hpnotebook:~$ 200~sudo -u guest -s
+200~sudo: command not found                                                                                                                                                                    
+deshan@deshan-hpnotebook:~$ sudo -u guest -s                                                                                                                                               
+[sudo] password for deshan:                                                                                                                                                                    
+guest@deshan-hpnotebook:/home/deshan$ pwd                                                                                                                                                      
+/home/deshan                                                                                                                                                                                   
+guest@deshan-hpnotebook:/home/deshan$ ls                                                                                                                                                       
+ls: cannot open directory '.': Permission denied                                                                                                                                               
+guest@deshan-hpnotebook:/home/deshan$ cd ..                                                                                                                                                    
+guest@deshan-hpnotebook:/home$ ls                                                                                                                                                              
+deshan  guest  Rahul                                                                                                                                                                           
+guest@deshan-hpnotebook:/home$ cd guest/                                                                                                                                                       
+guest@deshan-hpnotebook:~$ ls                                                                                                                                                                  
+guest@deshan-hpnotebook:~$ mkdir test                                                                                                                                                          
+guest@deshan-hpnotebook:~$ cd test                                                                                                                                                             
+guest@deshan-hpnotebook:~/test$ touch ex.py
+guest@deshan-hpnotebook:~/test$ vi ex.py                                                                                                                                                       
+guest@deshan-hpnotebook:~/test$ ls                                                                                                                                                             
+ex.py                                                                                                                                                                                          
+guest@deshan-hpnotebook:~/test$ ls -l                                                                                                                                                          
+total 4                                                                                                                                                                                        
+-rw-rw-r-- 1 guest guest 13 Sep 18 14:20 ex.py                                                                                                                                                 
+guest@deshan-hpnotebook:~/test$ cd ..                                                                                                                                                          
+guest@deshan-hpnotebook:~$ mkdir test2                                                                                                                                                         
+guest@deshan-hpnotebook:~$ ls                                                                                                                                                                  
+test  test2                                                                                                                                                                                    
+guest@deshan-hpnotebook:~$ cd test                                                                                                                                                             
+guest@deshan-hpnotebook:~/test$ cp ex.py ../test2
+guest@deshan-hpnotebook:~/test$ ls                                                                                                                                                             
+ex.py                                                                                                                                                                                          
+guest@deshan-hpnotebook:~/test$ cd ..                                                                                                                                                          
+guest@deshan-hpnotebook:~$ cd test2                                                                                                                                                            
+guest@deshan-hpnotebook:~/test2$ ls                                                                                                                                                            
+ex.py                                                                                                                                                                                          
+guest@deshan-hpnotebook:~/test2$ cd ..
+guest@deshan-hpnotebook:~$ mv test2 testing
+guest@deshan-hpnotebook:~$ ls                                                                                                                                                                  
+test  testing                                                                                                                                                                                  
+guest@deshan-hpnotebook:~$ rm -r testing
+guest@deshan-hpnotebook:~$ ls
+test
+guest@deshan-hpnotebook:~$ cd ..
+guest@deshan-hpnotebook:/home$ ls
+deshan  guest  Rahul
+guest@deshan-hpnotebook:/home$ chmod 775 guest
+guest@deshan-hpnotebook:/home$ ls -l
+total 12
+drwxr-x--- 26 deshan deshan 4096 Sep 18 05:29 deshan
+drwxrwxr-x  3 guest  guest  4096 Sep 18 14:24 guest
+drwxr-x---  2 Rahul  Rahul  4096 Sep 18 11:48 Rahul
+guest@deshan-hpnotebook:/home$ sudo -u deshan -s
+[sudo] password for guest: 
+guest is not in the sudoers file.  This incident will be reported.
+guest@deshan-hpnotebook:/home$ su deshan
+Password: 
+deshan@deshan-hpnotebook:/home$ cd ..
+deshan@deshan-hpnotebook:/$ ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  swapfile  sys  tmp  usr  var
+deshan@deshan-hpnotebook:/$ cd boot
+deshan@deshan-hpnotebook:/boot$ ls
+config-5.15.0-43-generic  grub                          initrd.img-5.15.0-48-generic  memtest86+.elf                System.map-5.15.0-48-generic  vmlinuz-5.15.0-48-generic
+config-5.15.0-48-generic  initrd.img                    initrd.img.old                memtest86+_multiboot.bin      vmlinuz                       vmlinuz.old
+efi                       initrd.img-5.15.0-43-generic  memtest86+.bin                System.map-5.15.0-43-generic  vmlinuz-5.15.0-43-generic
+deshan@deshan-hpnotebook:/boot$ uname -r
+5.15.0-48-generic
+deshan@deshan-hpnotebook:/boot$ cd ..
+deshan@deshan-hpnotebook:/$ ls -l
+total 524360
+lrwxrwxrwx   1 root root         7 Apr 19 15:32 bin -> usr/bin
+drwxr-xr-x   4 root root      4096 Sep 18 07:58 boot
+drwxr-xr-x  21 root root      4420 Sep 18 05:29 dev
+drwxr-xr-x 149 root root     12288 Sep 18 11:51 etc
+drwxr-xr-x   5 root root      4096 Sep 18 11:48 home
+lrwxrwxrwx   1 root root         7 Apr 19 15:32 lib -> usr/lib
+lrwxrwxrwx   1 root root         9 Apr 19 15:32 lib32 -> usr/lib32
+lrwxrwxrwx   1 root root         9 Apr 19 15:32 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root        10 Apr 19 15:32 libx32 -> usr/libx32
+drwx------   2 root root     16384 Jul  5 19:40 lost+found
+drwxr-xr-x   5 root root      4096 Jul  6 08:01 media
+drwxr-xr-x   2 root root      4096 Apr 19 15:32 mnt
+drwxr-xr-x   6 root root      4096 Sep 16 13:34 opt
+dr-xr-xr-x 296 root root         0 Sep 18 05:28 proc
+drwx------   9 root root      4096 Jul 14 15:21 root
+drwxr-xr-x  34 root root      1020 Sep 18 14:12 run
+lrwxrwxrwx   1 root root         8 Apr 19 15:32 sbin -> usr/sbin
+drwxr-xr-x  12 root root      4096 Sep 16 14:28 snap
+drwxr-xr-x   2 root root      4096 Apr 19 15:32 srv
+-rw-------   1 root root 536870912 Jul  5 19:42 swapfile
+dr-xr-xr-x  13 root root         0 Sep 18 05:28 sys
+drwxrwxrwt  19 root root      3600 Sep 18 14:28 tmp
+drwxr-xr-x  14 root root      4096 Jul 13 10:15 usr
+drwxr-xr-x  14 root root      4096 Apr 19 15:37 var
+deshan@deshan-hpnotebook:/$ groups
+deshan adm cdrom sudo dip plugdev input lpadmin sambashare
+deshan@deshan-hpnotebook:/$ group guest
+Command 'group' not found, did you mean:
+  command 'groups' from deb coreutils (8.32-4.1ubuntu1)
+  command 'grop' from deb grop (2:0.10-1.2)
+Try: sudo apt install <deb name>
+deshan@deshan-hpnotebook:/$ groups guest
+guest : guest
+deshan@deshan-hpnotebook:/$ groups Rahul
+Rahul : Rahul Students
+deshan@deshan-hpnotebook:/$ su guest
+Password: 
+
+su: Authentication failure
+deshan@deshan-hpnotebook:/$ 
+deshan@deshan-hpnotebook:/$ sudo -u guest -s
+[sudo] password for deshan: 
+guest@deshan-hpnotebook:/$ ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  swapfile  sys  tmp  usr  var
+guest@deshan-hpnotebook:/$ cd home
+guest@deshan-hpnotebook:/home$ ls
+deshan  guest  Rahul
+guest@deshan-hpnotebook:/home$ cd guest
+guest@deshan-hpnotebook:~$ ls
+test
+guest@deshan-hpnotebook:~$ touch sidbi
+guest@deshan-hpnotebook:~$ ls
+sidbi  test
+guest@deshan-hpnotebook:~$ ls -l
+total 4
+-rw-rw-r-- 1 guest guest    0 Sep 18 14:33 sidbi
+drwxrwxr-x 2 guest guest 4096 Sep 18 14:20 test
+guest@deshan-hpnotebook:~$ cp sidbi sidbi2
+guest@deshan-hpnotebook:~$ ls
+sidbi  sidbi2  test
+guest@deshan-hpnotebook:~$ ls -li
+total 4
+3685389 -rw-rw-r-- 1 guest guest    0 Sep 18 14:33 sidbi
+3685390 -rw-rw-r-- 1 guest guest    0 Sep 18 14:33 sidbi2
+5123058 drwxrwxr-x 2 guest guest 4096 Sep 18 14:20 test
+guest@deshan-hpnotebook:~$ sudo adduser -m guest1
+[sudo] password for guest: 
+guest is not in the sudoers file.  This incident will be reported.
+guest@deshan-hpnotebook:~$ su deshan
+Password: 
+deshan@deshan-hpnotebook:/home/guest$ sudo adduser -m guest
+[sudo] password for deshan: 
+Unknown option: m
+adduser [--home DIR] [--shell SHELL] [--no-create-home] [--uid ID]
+[--firstuid ID] [--lastuid ID] [--gecos GECOS] [--ingroup GROUP | --gid ID]
+[--disabled-password] [--disabled-login] [--add_extra_groups]
+[--encrypt-home] USER
+   Add a normal user
+
+adduser --system [--home DIR] [--shell SHELL] [--no-create-home] [--uid ID]
+[--gecos GECOS] [--group | --ingroup GROUP | --gid ID] [--disabled-password]
+[--disabled-login] [--add_extra_groups] USER
+   Add a system user
+
+adduser --group [--gid ID] GROUP
+addgroup [--gid ID] GROUP
+   Add a user group
+
+addgroup --system [--gid ID] GROUP
+   Add a system group
+
+adduser USER GROUP
+   Add an existing user to an existing group
+
+general options:
+  --quiet | -q      don't give process information to stdout
+  --force-badname   allow usernames which do not match the
+                    NAME_REGEX[_SYSTEM] configuration variable
+  --extrausers      uses extra users as the database
+  --help | -h       usage message
+  --version | -v    version number and copyright
+  --conf | -c FILE  use FILE as configuration file
+
+deshan@deshan-hpnotebook:/home/guest$ sudo useradd -m guest
+useradd: user 'guest' already exists
+deshan@deshan-hpnotebook:/home/guest$ sudo useradd -m guest1
+deshan@deshan-hpnotebook:/home/guest$ sudo passwd guest1
+New password: 
+Retype new password: 
+passwd: password updated successfully
+deshan@deshan-hpnotebook:/home/guest$ sudo groupadd guest
+groupadd: group 'guest' already exists
+deshan@deshan-hpnotebook:/home/guest$ sudo usermod -a -G guest guest1
+deshan@deshan-hpnotebook:/home/guest$ ls
+sidbi  sidbi2  test
+deshan@deshan-hpnotebook:/home/guest$ ls -l
+total 4
+-rw-rw-r-- 1 guest guest    0 Sep 18 14:33 sidbi
+-rw-rw-r-- 1 guest guest    0 Sep 18 14:33 sidbi2
+drwxrwxr-x 2 guest guest 4096 Sep 18 14:20 test
+deshan@deshan-hpnotebook:/home/guest$ sudo -u deshan -s
+deshan@deshan-hpnotebook:/home/guest$ sudo -u guest -s
+[sudo] password for deshan: 
+guest@deshan-hpnotebook:~$ ls
+sidbi  sidbi2  test
+guest@deshan-hpnotebook:~$ ls -l
+total 4
+-rw-rw-r-- 1 guest guest    0 Sep 18 14:33 sidbi
+-rw-rw-r-- 1 guest guest    0 Sep 18 14:33 sidbi2
+drwxrwxr-x 2 guest guest 4096 Sep 18 14:20 test
+guest@deshan-hpnotebook:~$ su deshan
+Password: 
+deshan@deshan-hpnotebook:/home/guest$ sudo -u guest1 0s
+[sudo] password for deshan: 
+sudo: 0s: command not found
+deshan@deshan-hpnotebook:/home/guest$ sudo -u guest1 -s
+guest1@deshan-hpnotebook:/home/guest$ ls -li
+total 4
+3685389 -rw-rw-r-- 1 guest guest    0 Sep 18 14:33 sidbi
+3685390 -rw-rw-r-- 1 guest guest    0 Sep 18 14:33 sidbi2
+5123058 drwxrwxr-x 2 guest guest 4096 Sep 18 14:20 test
+guest1@deshan-hpnotebook:/home/guest$ 
