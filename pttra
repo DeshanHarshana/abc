@@ -1,0 +1,84 @@
+enable
+disable
+configure terminal
+Router(config)# interface FastEthernet 0/1
+
+Router(config)#line console 0
+
+Router(config)#line vty 0 4
+
+Router# show version
+Router# show hardware
+Router# show history
+
+enable password Mypassword
+enable secret MyPassword
+
+
+password configuration
+
+ Router(config)#line console 0
+Router(config-line)# login
+Router(config-line)#password 1234
+Router(config-line)#exec-timeout 0 0
+logging synchronous
+
+Router(config)# line vty 0 4
+Router(config-line)# login
+Router(config-line)#password 1234
+Router(config-line)#exec-timeout 0 0
+logging synchronous
+
+turn on router
+
+Router(config)# interface Fa 0/0
+Router(config-if)# no shutdown
+
+
+turn on router
+
+Router(config)# interface Fa 0/0
+Router(config-if)# no shutdown
+
+
+status of router interface
+
+Router# show interfaces
+Router#show interfaces ethernet 0
+
+Router#show ip interface brief
+
+
+manage configuring file
+Router# copy run start
+Router#copy start run
+
+Router#show run
+Router#show start
+
+Router#show startup | begin ethernet
+
+Router#show startup | exclude ethernet
+Router#show startup | include ethernet
+
+
+add description
+Router(config)# interface serial 0
+Router(config)# decription mydescription
+
+Router(config)#banner motd #
+THis is banner
+#
+ 
+ 
+ switching
+Switch(config)# vlan 100
+Switch(config)# name MY_VLAN
+Switch(config)# interface FastEthernet 0/1
+
+Switch#show vlan
+ 
+ 
+ 
+ 
+ 
