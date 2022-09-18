@@ -1,0 +1,19 @@
+[root@ws01 tmp]# ifconfig -a
+[root@ws01 tmp]# ifconfig –i eth0
+Assign /Change IP Address
+[root@ws01 tmp]# ifconfig eth0 192.168.1.1 netmask 255.255.0.0 up
+The "up" at the end of the command activates the interface.
+
+Interface Configuration Files
+[root@ws01 network-scripts]# cd /etc/sysconfig/network-scripts/ [root@ws01 network-scripts]# vi ifcfg-eth0
+
+After you change the values in the configuration files for the NIC you have to deactivate and activate it for the modifications to take effect. The ifdown and ifup commands can be used to do this:
+[root@ws01 tmp]# ifdown eth0
+[root@ws01 tmp]# ifup eth0
+
+[root@ws01 network-scripts]# ifconfig eth0:0 192.168.1.2 netmask 255.255.0.0 up
+
+
+[root@ws01 /]# ifconfig -a eth0
+
+[root@ws01 /]# arp -a   // for mac address
