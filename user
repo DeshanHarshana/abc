@@ -1,0 +1,55 @@
+ls –l: Displays Permissions
+chmod 777 example.py //for file
+chmod 777 test // for directory
+
+d<owner><group><other>
+d<read,write,execute><read,write,execute><read,write,execute>
+
+read එක 1 කියලා දාල write එක 1 කියලා දාලා execute එක 1 කියලා දෑම්මොත් ඒක දාන්නෙ 111 කියලා. එතකොට ඒකේ දශමය අගය 7, අන්න ඒ වාගේ user type තුනටම ඒක දානවා.
+
+
+
+user and groups permissions
+
+user:- user is the name of the owner
+group -: method to organize user to system
+
+create new user
+
+deshan@deshan-hpnotebook:~$ sudo useradd -m Rahul
+deshan@deshan-hpnotebook:~$ sudo passwd Rahul
+New password: 
+Retype new password: 
+passwd: password updated successfully
+deshan@deshan-hpnotebook:~$ 
+
+create new group
+
+deshan@deshan-hpnotebook:~$ sudo groupadd Students
+deshan@deshan-hpnotebook:~$ sudo groupadd Teachers
+
+add user to group
+
+deshan@deshan-hpnotebook:~$ sudo usermod -a -G Students Rahul
+
+add permission to folder
+
+sudo chown -R :Students /home/deshan/Desktop/Assignmnet/
+deshan@deshan-hpnotebook:~$ cd Desktop
+deshan@deshan-hpnotebook:~/Desktop$ sudo chmod -R g+rwx Assignmnet/
+
+
+
+
+sudo useradd -m guest
+sudo passwd guest
+
+switch to guest 
+
+sudo -u guest -s
+
+
+
+copy file
+cp example.txt ~/Documents //copy file
+cp -r ~/Downloads/pictures-directory ~/Pictures/family-vacati //copy folder
