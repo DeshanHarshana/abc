@@ -1,0 +1,59 @@
+5 
+    a)
+        erase startup-config
+
+
+        Switch(config)#interface range FastEthernet 0/1 
+        Switch(config-if-range)#shutdown
+
+    b)
+        Switch(config)#hostname SW
+
+
+        Switch>enable
+        Switch#config ter
+        Enter configuration commands, one per line.  End with CNTL/Z.
+        Switch(config)#enable password 1234
+
+
+        Switch(config)#line console 0
+        Switch(config-line)#login
+        % Login disabled on line 0, until 'password' is set
+        Switch(config-line)#password 1234
+        Switch(config-line)#exec-timeout 0 0
+        Switch(config-line)#loggin synchronous 
+
+
+        Switch(config)#line vty 0 4
+        Switch(config-line)#login
+        Switch(config-line)#password 1234
+        Switch(config-line)#exec-timeout 0 0
+        Switch(config-line)#logging synchronous 
+        Switch(config-line)#
+
+
+        Switch(config)#interface FastEthernet 0/1
+        Switch(config-if)#no shutdown
+        
+    
+    
+    c)
+        Switch(config)#vlan 10
+        Switch(config-vlan)#name MY_VLAN1
+        Switch(config-vlan)#exit
+        Switch(config)#vlan 20
+        Switch(config-vlan)#name MY_VLAN2
+        Switch(config-vlan)#
+
+
+    d)
+        Switch(config)#interface FastEthernet 0/1
+        Switch(config-if)#switchport mode access
+        Switch(config-if)#switchport access vlan 10
+        Switch(config-if)#interface FastEthernet 1/1
+        Switch(config-if)#switchport mode access
+        Switch(config-if)#switchport access vlan 10
+
+
+
+
